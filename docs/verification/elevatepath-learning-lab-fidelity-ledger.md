@@ -1,6 +1,6 @@
-# RiseGuide Learning Lab fidelity ledger
+# ElevatePath Learning Lab fidelity ledger
 
-Reference: [`docs/visuals/riseguide-learning-lab-concept.png`](../visuals/riseguide-learning-lab-concept.png)
+Reference: [`docs/visuals/elevatepath-learning-lab-concept.png`](../visuals/elevatepath-learning-lab-concept.png)
 
 Verification date: 2026-09-15
 
@@ -26,5 +26,4 @@ Verification date: 2026-09-15
 ## Intentional deviations
 
 - Account creation, cloud sync, live AI coaching, speech analysis, audio playback, expert retrieval, and external notifications remain deferred. The MVP labels those boundaries instead of simulating unavailable services.
-- The concept is an original visual direction for RiseGuide Learning Lab; no proprietary RiseGuide assets or copied interface text were used.
-
+- The concept is an original visual direction for ElevatePath Learning Lab; no third-party proprietary assets or copied interface text were used.

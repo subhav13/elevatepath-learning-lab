@@ -27,7 +27,7 @@ export function ProfileView({ goal, progress, totalLessons = 5, onReset }: Profi
           <span className="profile-card__icon"><Target aria-hidden="true" size={19} /></span>
           <p className="panel-kicker">This week&apos;s focus</p>
           <h2>{goal?.label ?? 'Choose a focus to begin'}</h2>
-          <p>{goal?.description ?? 'Pick one small direction from onboarding and RiseGuide will keep the practice focused.'}</p>
+          <p>{goal?.description ?? 'Pick one small direction from onboarding and ElevatePath will keep the practice focused.'}</p>
         </article>
         <article className="profile-card profile-card--progress">
           <p className="panel-kicker">Your progress</p>

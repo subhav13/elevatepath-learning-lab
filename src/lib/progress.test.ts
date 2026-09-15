@@ -42,7 +42,7 @@ describe('local progress store', () => {
   })
 
   it('falls back to defaults when stored data is malformed', () => {
-    localStorage.setItem('riseguide-learning-lab.progress.v1', '{bad json')
+    localStorage.setItem('elevatepath-learning-lab.progress.v1', '{bad json')
 
     expect(loadProgress(localStorage)).toEqual(DEFAULT_PROGRESS)
   })

@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { App } from './App'
 
-describe('RiseGuide Learning Lab app shell', () => {
+describe('ElevatePath Learning Lab app shell', () => {
   beforeEach(() => {
     localStorage.clear()
   })
@@ -22,13 +22,13 @@ describe('RiseGuide Learning Lab app shell', () => {
     await user.click(screen.getByRole('button', { name: /speak with more clarity/i }))
 
     expect(screen.getByRole('heading', { name: /your next 15 minutes/i })).toBeInTheDocument()
-    expect(localStorage.getItem('riseguide-learning-lab.progress.v1')).toContain('speak-clearly')
+    expect(localStorage.getItem('elevatepath-learning-lab.progress.v1')).toContain('speak-clearly')
   })
 
   it('changes the active destination through accessible navigation', async () => {
     const user = userEvent.setup()
     localStorage.setItem(
-      'riseguide-learning-lab.progress.v1',
+      'elevatepath-learning-lab.progress.v1',
       JSON.stringify({ version: 1, selectedGoalId: 'speak-clearly', completedLessonIds: [], practiceDraft: '' }),
     )
     render(<App />)

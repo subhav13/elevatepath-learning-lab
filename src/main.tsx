@@ -6,7 +6,7 @@ import { App } from './app/App'
 const root = document.getElementById('root')
 
 if (!root) {
-  throw new Error('RiseGuide Learning Lab root element is missing.')
+  throw new Error('ElevatePath Learning Lab root element is missing.')
 }
 
 createRoot(root).render(

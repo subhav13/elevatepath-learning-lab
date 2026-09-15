@@ -1,20 +1,20 @@
-# RiseGuide Learning Lab Implementation Plan
+# ElevatePath Learning Lab Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build and publish a polished, responsive RiseGuide Learning Lab web MVP with a real local learning loop, honest future-service boundaries, and verified desktop/mobile behavior.
+**Goal:** Build and publish a polished, responsive ElevatePath Learning Lab web MVP with a real local learning loop, honest future-service boundaries, and verified desktop/mobile behavior.
 
 **Architecture:** React + Vite + TypeScript with feature-oriented components, deterministic seeded content, and a small browser-local progress store. App views communicate through explicit state and service interfaces so authentication, server persistence, speech analysis, retrieval, and coaching can replace local adapters later.
 
 **Tech Stack:** React, TypeScript, Vite, Vitest, Testing Library, jsdom, lucide-react, CSS custom properties, Sites hosting, GitHub.
 
-**Spec:** `docs/superpowers/specs/2026-09-15-riseguide-learning-lab-design.md`
+**Spec:** `docs/superpowers/specs/2026-09-15-elevatepath-learning-lab-design.md`
 
 ## Global Constraints
 
-- The GitHub repository is public and named `subhav13/riseguide-learning-lab`.
-- The Sites slug is `riseguide-learning-lab`; keep Sites access owner-private unless the user separately requests a different audience.
-- Use original copy, seeded content, and visual assets; do not copy RiseGuide proprietary assets or identity.
+- The GitHub repository is public and named `subhav13/elevatepath-learning-lab`.
+- The Sites slug is `elevatepath-learning-lab`; keep Sites access owner-private unless the user separately requests a different audience.
+- Use original copy, seeded content, and visual assets; do not copy third-party proprietary assets or identity.
 - Keep AI, speech, authentication, payment, analytics, push, and server persistence deferred and explicitly labeled.
 - Preserve semantic HTML, keyboard focus, color contrast, reduced-motion support, and responsive behavior.
 - Follow RED-GREEN-REFACTOR for every behavior-bearing production module.
@@ -78,13 +78,13 @@
 
   ```bash
   git add package.json package-lock.json index.html tsconfig.json tsconfig.app.json tsconfig.node.json vite.config.ts src/test/setup.ts .gitignore
-  git commit -m "chore: scaffold RiseGuide Learning Lab app"
+    git commit -m "chore: scaffold ElevatePath Learning Lab app"
   ```
 
 ### Task 2: Create the visual concept and shared design system
 
 **Files:**
-- Create: `docs/visuals/riseguide-learning-lab-concept.png`
+- Create: `docs/visuals/elevatepath-learning-lab-concept.png`
 - Create: `src/styles/tokens.css`
 - Create: `src/styles/global.css`
 - Create: `src/components/BrandMark.tsx`
@@ -100,7 +100,7 @@
 
   Use the built-in image generation tool with a `ui-mockup` prompt showing the agreed product surface: an original mobile-first communication micro-learning dashboard with Home, Lesson/Quiz, Learn, Practice, SEEK reserved state, and a compact mobile continuation. Require readable, code-implementable hierarchy, deep ink background, indigo surfaces, warm lime/coral progress accent, generous whitespace, and no copied logos, screenshots, or branded assets.
 
-  Save the selected concept into `docs/visuals/riseguide-learning-lab-concept.png` and inspect it before extracting tokens.
+  Save the selected concept into `docs/visuals/elevatepath-learning-lab-concept.png` and inspect it before extracting tokens.
 
 - [ ] **Step 2: Extract tokens from the concept**
 
@@ -116,7 +116,7 @@
 
   ```bash
   git add docs/visuals src/styles src/components/BrandMark.tsx src/components/ProgressBar.tsx src/components/ActionButton.tsx src/components/SectionHeading.tsx
-  git commit -m "feat: add RiseGuide Learning Lab design system"
+    git commit -m "feat: add ElevatePath Learning Lab design system"
   ```
 
 ### Task 3: Implement and test the local content/progress boundary
@@ -316,7 +316,7 @@
 ### Task 7: Browser QA, fidelity ledger, and publishing
 
 **Files:**
-- Create: `docs/verification/riseguide-learning-lab-fidelity-ledger.md`
+- Create: `docs/verification/elevatepath-learning-lab-fidelity-ledger.md`
 - Modify: `README.md`
 - Modify: `.openai/hosting.json`
 - Modify: source files only if QA finds a mismatch
@@ -348,7 +348,7 @@
 
 - [ ] **Step 4: Capture the implementation screenshot and inspect it with the concept**
 
-  Use the Browser/IAB screenshot and `view_image` on both `docs/visuals/riseguide-learning-lab-concept.png` and the latest implementation screenshot. Compare copy, layout, typography, palette, spacing/container model, asset treatment, responsive continuation, and core interaction state.
+  Use the Browser/IAB screenshot and `view_image` on both `docs/visuals/elevatepath-learning-lab-concept.png` and the latest implementation screenshot. Compare copy, layout, typography, palette, spacing/container model, asset treatment, responsive continuation, and core interaction state.
 
 - [ ] **Step 5: Write the fidelity ledger and fix every material mismatch**
 
@@ -356,7 +356,7 @@
 
 - [ ] **Step 6: Create the public GitHub repository and push the exact source state**
 
-  Create public repository `subhav13/riseguide-learning-lab`, set it as `origin`, push `main`, and verify the remote HEAD matches the local full SHA. If the GitHub connector cannot create repositories, use the authenticated GitHub UI or another authenticated GitHub mechanism; do not commit credentials or tokens.
+  Create public repository `subhav13/elevatepath-learning-lab`, set it as `origin`, push `main`, and verify the remote HEAD matches the local full SHA. If the GitHub connector cannot create repositories, use the authenticated GitHub UI or another authenticated GitHub mechanism; do not commit credentials or tokens.
 
 - [ ] **Step 7: Create the Sites project, save the pushed version, and deploy it**
 

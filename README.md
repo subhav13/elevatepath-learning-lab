@@ -1,6 +1,6 @@
-# RiseGuide Learning Lab
+# ElevatePath Learning Lab
 
-RiseGuide Learning Lab is a focused, local-first microlearning experience for building everyday communication confidence. It turns one useful idea into a short lesson, a quick check for understanding, and a low-stakes practice rep.
+ElevatePath Learning Lab is a focused, local-first microlearning experience for building everyday communication confidence. It turns one useful idea into a short lesson, a quick check for understanding, and a low-stakes practice rep.
 
 ## Included in this MVP
 
@@ -27,11 +27,11 @@ npm test -- --run
 npm run build
 ```
 
-Progress is stored in the browser under `riseguide-learning-lab.progress.v1`. The MVP does not claim account sync, live AI coaching, speech analysis, expert retrieval, audio playback, or external notifications. Those are reserved seams for later service work.
+Progress is stored in the browser under `elevatepath-learning-lab.progress.v1`. The MVP does not claim account sync, live AI coaching, speech analysis, expert retrieval, audio playback, or external notifications. Those are reserved seams for later service work.
 
 ## Product direction
 
-The interface uses an original RiseGuide Learning Lab visual language: deep ink surfaces, indigo depth, lime progress signals, coral warmth, large editorial headings, and short action-oriented copy. The concept reference is preserved at [`docs/visuals/riseguide-learning-lab-concept.png`](docs/visuals/riseguide-learning-lab-concept.png).
+The interface uses an original ElevatePath Learning Lab visual language: deep ink surfaces, indigo depth, lime progress signals, coral warmth, large editorial headings, and short action-oriented copy. The concept reference is preserved at [`docs/visuals/elevatepath-learning-lab-concept.png`](docs/visuals/elevatepath-learning-lab-concept.png).
 
 ## Project structure
 
@@ -41,4 +41,3 @@ The interface uses an original RiseGuide Learning Lab visual language: deep ink 
 - `src/features` — onboarding, home, learn, practice, SEEK, and profile views
 - `src/lib` — local progress and deterministic practice logic
 - `docs/superpowers` — approved design and implementation plan
-

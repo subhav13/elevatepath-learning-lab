@@ -1,4 +1,4 @@
-export const PROGRESS_STORAGE_KEY = 'riseguide-learning-lab.progress.v1'
+export const PROGRESS_STORAGE_KEY = 'elevatepath-learning-lab.progress.v1'
 
 export type ProgressState = {
   version: 1

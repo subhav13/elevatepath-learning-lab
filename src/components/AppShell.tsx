@@ -14,7 +14,7 @@ type AppShellProps = {
 export function AppShell({ activeView, onNavigate, progressSummary, children }: AppShellProps) {
   return (
     <div className="app-shell">
-      <aside className="app-shell__rail" aria-label="RiseGuide Learning Lab">
+      <aside className="app-shell__rail" aria-label="ElevatePath Learning Lab">
         <BrandMark />
         <p className="app-shell__rail-note">Small lessons. Real conversations. A more confident you.</p>
       </aside>

@@ -1,14 +1,14 @@
-# RiseGuide Learning Lab Design
+# ElevatePath Learning Lab Design
 
 **Date:** 2026-09-15  
 **Status:** Approved direction; awaiting written-spec review  
-**Repository:** `subhav13/riseguide-learning-lab`  
-**Site slug:** `riseguide-learning-lab`  
+**Repository:** `subhav13/elevatepath-learning-lab`  
+**Site slug:** `elevatepath-learning-lab`  
 **Visibility:** Public
 
 ## 1. Product intent
 
-RiseGuide Learning Lab is an original, responsive web interpretation of the
+ElevatePath Learning Lab is an original, responsive web interpretation of the
 research brief for a structured communication micro-learning product. The
 first release should make the core loop tangible:
 
@@ -18,7 +18,7 @@ first release should make the core loop tangible:
 4. Mark progress and return to a visible streak.
 
 The research document is treated as product input, not as an execution
-instruction. The implementation will not copy RiseGuide's proprietary assets,
+instruction. The implementation will not copy third-party proprietary assets,
 content, or visual identity. Later AI, speech, payment, and account features
 must be added behind explicit interfaces rather than implied by mock data.
 
@@ -168,7 +168,7 @@ spacing/container behavior, and responsive continuation.
 
 ## 9. Delivery and GitHub/Sites checkpoints
 
-The project will use public GitHub repository `subhav13/riseguide-learning-lab`
+The project will use public GitHub repository `subhav13/elevatepath-learning-lab`
 and a matching Sites project. Push only meaningful, coherent milestones:
 
 1. approved design specification;
