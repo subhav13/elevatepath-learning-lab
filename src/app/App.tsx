@@ -5,55 +5,11 @@ import { OnboardingView } from '../features/onboarding/OnboardingView'
 import { HomeView } from '../features/home/HomeView'
 import { LearnView } from '../features/learn/LearnView'
 import { LessonView } from '../features/learn/LessonView'
+import { PracticeView } from '../features/practice/PracticeView'
+import { SeekView } from '../features/seek/SeekView'
+import { ProfileView } from '../features/profile/ProfileView'
 import type { ViewName } from './viewTypes'
-import { completeLesson, loadProgress, saveProgress, selectGoal, type ProgressState } from '../lib/progress'
-
-const viewCopy: Record<ViewName, { eyebrow: string; title: string; body: string }> = {
-  home: {
-    eyebrow: 'Today\'s practice',
-    title: 'Your next 15 minutes',
-    body: 'A focused lesson to build real-world communication skills.',
-  },
-  learn: {
-    eyebrow: 'Your journey',
-    title: 'Learn',
-    body: 'Follow a small sequence of lessons that build on each other.',
-  },
-  practice: {
-    eyebrow: 'Turn knowledge into confidence',
-    title: 'Practice',
-    body: 'Rehearse one idea in your own words before the moment arrives.',
-  },
-  seek: {
-    eyebrow: 'Expert guidance, thoughtfully curated',
-    title: 'SEEK',
-    body: 'A future home for concise answers grounded in trusted communication sources.',
-  },
-  profile: {
-    eyebrow: 'Your local learning space',
-    title: 'Profile',
-    body: 'Keep an eye on your progress and the focus you chose for this week.',
-  },
-}
-
-function PlaceholderView({ activeView, progress }: { activeView: ViewName; progress: ProgressState }) {
-  const copy = viewCopy[activeView]
-  const completion = progress.completedLessonIds.length
-
-  return (
-    <section className={`placeholder-view placeholder-view--${activeView}`}>
-      <p className="eyebrow">{copy.eyebrow}</p>
-      <h1>{copy.title}</h1>
-      <p className="placeholder-view__body">{copy.body}</p>
-      {activeView === 'home' ? (
-        <div className="placeholder-view__preview">
-          <span>Communication journey</span>
-          <strong>{completion} of {communicationJourney.lessonCount} lessons complete</strong>
-        </div>
-      ) : null}
-    </section>
-  )
-}
+import { completeLesson, loadProgress, resetProgress, savePracticeDraft, saveProgress, selectGoal, type ProgressState } from '../lib/progress'
 
 export function App() {
   const [progress, setProgress] = useState<ProgressState>(() => loadProgress(window.localStorage))
@@ -83,6 +39,19 @@ export function App() {
     saveProgress(window.localStorage, nextProgress)
   }
 
+  function handleSavePracticeDraft(draft: string) {
+    const nextProgress = savePracticeDraft(progress, draft)
+    setProgress(nextProgress)
+    saveProgress(window.localStorage, nextProgress)
+  }
+
+  function handleResetProgress() {
+    const nextProgress = resetProgress(window.localStorage)
+    setProgress(nextProgress)
+    setActiveView('home')
+    setActiveLessonId(null)
+  }
+
   function renderActiveView() {
     if (activeView === 'home') {
       return <HomeView journey={communicationJourney} progress={progress} onOpenLesson={handleOpenLesson} onNavigate={handleNavigate} />
@@ -96,7 +65,11 @@ export function App() {
       return <LearnView journey={communicationJourney} progress={progress} onOpenLesson={handleOpenLesson} />
     }
 
-    return <PlaceholderView activeView={activeView} progress={progress} />
+    if (activeView === 'practice') return <PracticeView progress={progress} onSaveDraft={handleSavePracticeDraft} />
+    if (activeView === 'seek') return <SeekView onNotify={() => undefined} />
+    if (activeView === 'profile') return <ProfileView goal={selectedGoal} progress={progress} totalLessons={communicationJourney.lessonCount} onReset={handleResetProgress} />
+
+    return null
   }
 
   if (!selectedGoal) {
