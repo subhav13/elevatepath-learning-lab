@@ -2,8 +2,11 @@ import { useMemo, useState } from 'react'
 import { communicationJourney, goals } from '../data/content'
 import { AppShell } from '../components/AppShell'
 import { OnboardingView } from '../features/onboarding/OnboardingView'
+import { HomeView } from '../features/home/HomeView'
+import { LearnView } from '../features/learn/LearnView'
+import { LessonView } from '../features/learn/LessonView'
 import type { ViewName } from './viewTypes'
-import { loadProgress, saveProgress, selectGoal, type ProgressState } from '../lib/progress'
+import { completeLesson, loadProgress, saveProgress, selectGoal, type ProgressState } from '../lib/progress'
 
 const viewCopy: Record<ViewName, { eyebrow: string; title: string; body: string }> = {
   home: {
@@ -55,12 +58,45 @@ function PlaceholderView({ activeView, progress }: { activeView: ViewName; progr
 export function App() {
   const [progress, setProgress] = useState<ProgressState>(() => loadProgress(window.localStorage))
   const [activeView, setActiveView] = useState<ViewName>('home')
+  const [activeLessonId, setActiveLessonId] = useState<string | null>(null)
   const selectedGoal = useMemo(() => goals.find((goal) => goal.id === progress.selectedGoalId), [progress.selectedGoalId])
 
   function handleSelectGoal(goalId: string) {
     const nextProgress = selectGoal(progress, goalId)
     setProgress(nextProgress)
     saveProgress(window.localStorage, nextProgress)
+  }
+
+  function handleNavigate(view: ViewName) {
+    setActiveView(view)
+    if (view !== 'learn') setActiveLessonId(null)
+  }
+
+  function handleOpenLesson(lessonId: string) {
+    setActiveLessonId(lessonId)
+    setActiveView('learn')
+  }
+
+  function handleCompleteLesson(lessonId: string) {
+    const nextProgress = completeLesson(progress, lessonId)
+    setProgress(nextProgress)
+    saveProgress(window.localStorage, nextProgress)
+  }
+
+  function renderActiveView() {
+    if (activeView === 'home') {
+      return <HomeView journey={communicationJourney} progress={progress} onOpenLesson={handleOpenLesson} onNavigate={handleNavigate} />
+    }
+
+    if (activeView === 'learn') {
+      if (activeLessonId) {
+        const lesson = communicationJourney.lessons.find((item) => item.id === activeLessonId)
+        if (lesson) return <LessonView lesson={lesson} progress={progress} onCompleteLesson={handleCompleteLesson} onBack={() => setActiveLessonId(null)} />
+      }
+      return <LearnView journey={communicationJourney} progress={progress} onOpenLesson={handleOpenLesson} />
+    }
+
+    return <PlaceholderView activeView={activeView} progress={progress} />
   }
 
   if (!selectedGoal) {
@@ -70,10 +106,10 @@ export function App() {
   return (
     <AppShell
       activeView={activeView}
-      onNavigate={setActiveView}
+      onNavigate={handleNavigate}
       progressSummary={{ completed: progress.completedLessonIds.length, total: communicationJourney.lessonCount }}
     >
-      <PlaceholderView activeView={activeView} progress={progress} />
+      {renderActiveView()}
     </AppShell>
   )
 }
